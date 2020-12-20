@@ -1,4 +1,5 @@
 {
+  "plugins": ["@babel/plugin-transform-react-jsx"],
   "presets": [
     ["@babel/env", {
       "targets": {
@@ -10,5 +11,5 @@
       },
       "modules": false
     }]
-  ],
+  ]
 }

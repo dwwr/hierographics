@@ -1,26 +1,10 @@
 import Phaser from 'phaser';
+import React from "react";
+import ReactDOM from "react-dom";
+import App from './components/App';
 
-let config = {
-  type: Phaser.CANVAS,
-  scale: {
-    mode: Phaser.Scale.FIT,
-    autoCenter: Phaser.Scale.CENTER_BOTH,
-    width: 800,
-    height: 600
-  },
-  width: 800,
-  height: 600,
-  backgroundColor: 'ff9999',
-  physics: {
-      default: 'arcade',
-      arcade: {
-          gravity: { y: 1000},
-          enableBody: true
-      }
-  },
-  scene: []
-};
+import io from 'socket.io-client';
 
-let game = new Phaser.Game(config);
+let socket = io('http://localhost:3001', { transports: ['websocket']});
 
-export  {game, config};
+ReactDOM.render(<App />, document.getElementById("root"));

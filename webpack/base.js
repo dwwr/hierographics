@@ -28,13 +28,33 @@ module.exports = {
         test: /\.mp3$/,
         include: SRC,
         loader: 'file-loader'
+      },
+      {
+        test: [/\.jsx$/],
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        query: {
+          presets: ['env', 'react'],
+        }
+      },
+      {
+        test: /\.css$/,
+        use: [
+          { loader: 'style-loader' },
+          { loader: 'css-loader'
+            // query: {
+            //   modules: true,
+            //   localIdentName: '[name]__[local]___[hash:base64:5]'
+            // }
+          }
+        ]
       }
     ]
   },
   plugins: [
-    new CleanWebpackPlugin({
-      root: path.resolve(__dirname, "../")
-    }),
+    // new CleanWebpackPlugin({
+    //   root: path.resolve(__dirname, "../")
+    // }),
     new webpack.DefinePlugin({
       CANVAS_RENDERER: JSON.stringify(true),
       WEBGL_RENDERER: JSON.stringify(true)
