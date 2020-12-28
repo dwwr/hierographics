@@ -7,7 +7,8 @@
     "build": "webpack --config webpack/prod.js ",
     "start": "webpack-dev-server --config webpack/base.js --open",
     "start2": "webpack-dev-server  --host=0.0.0.0 --port=$PORT --disable-host-check",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
     "express": "^4.17.1",
     "fs": "0.0.1-security",
     "node": "^15.4.0",
+    "nodemon": "^2.0.6",
     "path": "^0.12.7",
     "phaser": "^3.50.0",
     "react": "^16.8.6",

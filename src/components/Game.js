@@ -1,6 +1,31 @@
 import Phaser from "phaser";
 import React from "react";
 import io from 'socket.io-client';
+import Test from '../scenes/Test';
+
+let config = {
+  type: Phaser.CANVAS,
+  parent: 'phaser-game',
+  scale: {
+    mode: Phaser.Scale.FIT,
+    autoCenter: Phaser.Scale.CENTER_BOTH,
+    width: 800,
+    height: 600
+  },
+  width: 800,
+  height: 600,
+  backgroundColor: 'ff9999',
+  physics: {
+      default: 'arcade',
+      arcade: {
+          gravity: { y: 0},
+          enableBody: true
+      }
+  },
+  scene: [Test]
+}
+
+let game;
 
 class Game extends React.Component {
   constructor(props) {
@@ -10,29 +35,7 @@ class Game extends React.Component {
   }
 
   componentDidMount() {
-    let config = {
-      type: Phaser.CANVAS,
-      parent: 'phaser-game',
-      scale: {
-        mode: Phaser.Scale.FIT,
-        autoCenter: Phaser.Scale.CENTER_BOTH,
-        width: 800,
-        height: 600
-      },
-      width: 800,
-      height: 600,
-      backgroundColor: 'ff9999',
-      physics: {
-          default: 'arcade',
-          arcade: {
-              gravity: { y: 1000},
-              enableBody: true
-          }
-      },
-      scene: []
-    }
-    let game = new Phaser.Game(config);
-    // let socket = io('http://localhost:3001');
+    // game = new Phaser.Game(config);
   }
 
   shouldComponentUpdate() {
@@ -46,4 +49,4 @@ class Game extends React.Component {
   }
 };
 
-export default Game;
+export {Game, game, config}
