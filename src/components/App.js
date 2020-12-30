@@ -50,7 +50,7 @@ class App extends React.Component {
     return (
       <div> Hello World
         <Join connectUser={this.connectUser}/>
-        {/* <Game /> */}
+        <Game user={this.state.user} otherUsers={this.state.otherUsers}/>
         <Chat messages={this.state.messages} user={this.state.user} />
       </div>
     )

@@ -17,16 +17,31 @@ app.get('*', (req, res) => {
 });
 
 let users = {};
-let messages = ['1','2','3','4','5','6','7','8','9'];
+let messages = [
+  { message: 'bbj', user: 'dw' },
+  { message: 'bbj', user: 'dw' },
+  { message: 'bbj', user: 'dw' },
+  { message: 'bbj', user: 'dw' },
+  { message: 'bbj', user: 'dw' },
+  { message: 'bbj', user: 'dw' },
+  { message: 'bbj', user: 'dw' },
+  { message: 'bbj', user: 'dw' },
+  { message: 'bbj', user: 'dw' }
+];
 
 socket.on('connection', function (socket) {
   console.log('a user connected');
   users[socket.id] = {
-    userId: socket.id
+    username: null,
+    userId: socket.id,
+    x: 0,
+    y: 0,
+    direction: null,
   };
 
   socket.on('newUser', (user) => {
     users[socket.id].username = user.username;
+    users[socket.id].character = user.character || 0;
     socket.emit('newSuccess', users[socket.id])
     socket.emit('currentUsers', users);
     socket.emit('messages', messages);
@@ -36,9 +51,20 @@ socket.on('connection', function (socket) {
   socket.on('newMessage', message => {
     console.log(message);
     messages.unshift(message);
-    console.log(messages)
+    console.log(messages);
     socket.broadcast.emit('messages', messages);
     socket.emit('messages', messages);
+  });
+
+  socket.on('playerMovement', (move) => {
+    users[socket.id].x = move.x;
+    users[socket.id].y = move.y;
+    users[socket.id].direction = move.direction;
+    socket.broadcast.emit('playerMoved', users[socket.id])
+  })
+
+  socket.on('playerStopment', () => {
+    socket.broadcast.emit('playerStopped', users[socket.id]);
   });
 
   socket.on('disconnect', function () {

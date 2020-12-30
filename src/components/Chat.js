@@ -11,9 +11,6 @@ class Chat extends React.Component {
     };
     this.onTextChange = this.onTextChange.bind(this);
     this.onMessageSubmit = this. onMessageSubmit.bind(this);
-    // socket.receiveMessages('messages', (messages) => {
-    //   this.setState({messages})
-    // })
   };
 
   onTextChange (e) {
@@ -21,14 +18,16 @@ class Chat extends React.Component {
   };
 
   onMessageSubmit () {
-    socket.emit('newMessage', this.state.msg);
+    let message = this.state.msg;
+    let user = this.props.user.username;
+    console.log(this.props.user)
+    let packet = {message, user}
+    console.log(packet);
+    socket.emit('newMessage', packet);
     this.setState({ msg: "" });
   };
 
   componentDidMount () {
-    // socket.receiveMessages('messages', (messages) => {
-    //   this.setState({messages})
-    // })
     socket.on('messages', (messages) => {
       this.setState({messages})
     })
@@ -41,7 +40,7 @@ class Chat extends React.Component {
         <button onClick={this.onMessageSubmit}>Send</button>
         <ul>
           {this.state.messages.map((message, index) => {
-            return <li key={index}>{message}</li>
+            return <li key={index}>{message.user} said {message.message}</li>
           })}
         </ul>
       </div>

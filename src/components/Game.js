@@ -1,6 +1,5 @@
 import Phaser from "phaser";
 import React from "react";
-import io from 'socket.io-client';
 import Test from '../scenes/Test';
 
 let config = {
@@ -35,7 +34,7 @@ class Game extends React.Component {
   }
 
   componentDidMount() {
-    // game = new Phaser.Game(config);
+    game = new Phaser.Game(config);
   }
 
   shouldComponentUpdate() {
