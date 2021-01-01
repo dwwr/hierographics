@@ -16,10 +16,9 @@ class Form extends React.Component {
       username: '',
       character: -1,
       visible: true
-    }
+    };
     this.handleChange = this.handleChange.bind(this);
     this.submitForm = this.submitForm.bind(this);
-    // this.toggleForm = this.toggleForm.bind(this);
   };
 
   handleChange(event) {
@@ -31,7 +30,6 @@ class Form extends React.Component {
 
   submitForm(e) {
     e.preventDefault();
-    console.log(this.state);
     if (!this.state.username || this.state.character === -1) {
       alert('Before entering, you must pick an avatar and username.');
       return;
@@ -39,15 +37,15 @@ class Form extends React.Component {
     let packet = {
       username: this.state.username,
       character: this.state.character
-    }
+    };
     this.props.connectUser(this.state);
     this.setState({
       visible: !this.state.visible
     });
-  }
+  };
 
   render() {
-    var visibility = "hide";
+    let visibility = "hide";
 
     if (this.state.visible) {
       visibility = "show";
@@ -63,10 +61,7 @@ class Form extends React.Component {
             visibility={visibility}
             character={this.state.character}
             onClick={(event)=>{
-              this.setState({character: index}, () => {
-                console.log(this.state)
-              });
-
+              this.setState({character: index});
             }}
             image={sprite}
             widthFrame={32}
@@ -83,10 +78,7 @@ class Form extends React.Component {
           visibility={visibility}
           character={this.state.character}
           onClick={(event)=>{
-            this.setState({character: index}, () => {
-              console.log(this.state)
-            });
-
+            this.setState({character: index});
           }}
           image={sprite}
           widthFrame={32}

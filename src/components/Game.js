@@ -1,6 +1,6 @@
 import Phaser from "phaser";
 import React from "react";
-import Test from '../scenes/Test';
+import Lobby from '../scenes/Lobby';
 import {StyledGame} from '../components/styles/gameStyles';
 
 let config = {
@@ -14,7 +14,7 @@ let config = {
   },
   width: 800,
   height: 600,
-  backgroundColor: 'ff9999',
+  backgroundColor: 'ffbf80',
   physics: {
       default: 'arcade',
       arcade: {
@@ -22,7 +22,7 @@ let config = {
           enableBody: true
       }
   },
-  scene: [Test]
+  scene: [Lobby]
 }
 
 let game;
@@ -32,19 +32,14 @@ class Game extends React.Component {
     super(props);
     this.state = {
       open: this.props.open
-    }
-  }
+    };
+  };
 
   componentDidMount() {
     game = new Phaser.Game(config);
-  }
-
-  // shouldComponentUpdate() {
-  //   return false;
-  // }
+  };
 
   render() {
-    console.log(this.props.open)
     return (
     <StyledGame id='phaser-game' open={this.props.open}></StyledGame>
     );

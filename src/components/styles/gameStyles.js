@@ -9,4 +9,4 @@ const StyledGame = styled.div`
   transform: ${props => props.open ? " translateY(-50%)" : null};
 `;
 
-export {StyledGame}
+export {StyledGame};

@@ -18,15 +18,15 @@ app.get('*', (req, res) => {
 
 let users = {};
 let messages = [
-  { message: 'bbj', user: 'dw' },
-  { message: 'bbj', user: 'dw' },
-  { message: 'bbj', user: 'dw' },
-  { message: 'bbj', user: 'dw' },
-  { message: 'bbj', user: 'dw' },
-  { message: 'bbj', user: 'dw' },
-  { message: 'bbj', user: 'dw' },
-  { message: 'bbj', user: 'dw' },
-  { message: 'bbj', user: 'dw' }
+  { message: 'bbj', user: 'dw', character: 0 },
+  { message: 'bbj', user: 'dw', character: 1 },
+  { message: 'bbj', user: 'dw', character: 2 },
+  { message: 'bbj', user: 'dw', character: 3 },
+  { message: 'bbj', user: 'dw', character: 0 },
+  { message: 'bbj', user: 'dw', character: 1 },
+  { message: 'bbj', user: 'dw', character: 2 },
+  { message: 'bbj', user: 'dw', character: 3 },
+  { message: 'bbj', user: 'dw', character: 0 }
 ];
 
 socket.on('connection', function (socket) {
@@ -34,14 +34,15 @@ socket.on('connection', function (socket) {
   users[socket.id] = {
     username: null,
     userId: socket.id,
-    x: 0,
-    y: 0,
+    x: Math.floor(Math.random() * 700) + 50,
+    y: Math.floor(Math.random() * 500) + 50,
     direction: null,
   };
 
   socket.on('newUser', (user) => {
     users[socket.id].username = user.username;
     users[socket.id].character = user.character || 0;
+    console.log(users[socket.id])
     socket.emit('newSuccess', users[socket.id])
     socket.emit('currentUsers', users);
     socket.emit('messages', messages);

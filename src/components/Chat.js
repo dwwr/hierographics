@@ -1,7 +1,7 @@
 import React from 'react';
 import {socket} from "./App";
 import {ChatStyled, InputStyled, ButtonStyled,MessagesContainer, MessageStyled} from './styles/chatStyles';
-import Messages from './Messages'
+import Messages from './Messages';
 
 class Chat extends React.Component {
   constructor(props) {
@@ -25,10 +25,13 @@ class Chat extends React.Component {
   onMessageSubmit () {
     let message = this.state.msg;
     let user = this.props.user.username;
-    console.log(this.props.user)
-    let packet = {message, user}
+    let character = this.props.user.character;
+    let packet = {message, user, character};
     console.log(packet);
     if (this.props.user.username) {
+      if (!message.length) {
+        return alert(`Don't submit an empty message!`)
+      }
       socket.emit('newMessage', packet);
       this.setState({ msg: "" });
     } else {
@@ -40,15 +43,13 @@ class Chat extends React.Component {
     if(e.which === 13) {
       this.onMessageSubmit();
     }
-  }
+  };
 
   componentDidMount () {
     socket.on('messages', (messages) => {
       this.setState({messages})
     })
-  }
-
-
+  };
 
   render () {
     return (

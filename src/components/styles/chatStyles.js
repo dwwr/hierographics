@@ -64,13 +64,19 @@ const MessagesContainer = styled.div`
   grid-auto-flow: row;
   display: grid;
   overflow-y: auto;
+  align-items: start;
+  align-content: start;
 `;
 
-const MessageStyled = styled.span.attrs(props => ({
+const MessageStyled = styled.div.attrs(props => ({
   className: props.first
 }))`
+  height: fit-content;
   background-color: #e6f2ff;
   margin-top: 5px;
+  padding: 5px;
+  display: flex;
+  flex-wrap: wrap;
   :active {
     border: 3px solid #66b3ff;
   }
@@ -78,18 +84,33 @@ const MessageStyled = styled.span.attrs(props => ({
     @keyframes rolldown {
       0% {
         transform: translateY(-100px);
-        border: 3px solid #66b3ff;
+        border: 3px solid #ff4d4d;
       }
       100% {
         transform: translateY(0);
-        border: 3px solid #66b3ff;
+        border: 3px solid #ff4d4d;
       }
     }
-    animation: 0.5s rolldown;
+    animation: .5s rolldown;
   }
 `;
 
-const UserStyled = styled.span``;
-const TextStyled = styled.span``;
+const UserStyled = styled.div`
+  display: flex;
+  font-family: "Optima";
+  font-style: italic;
+  font-size: 20px;
+  font-weight: bold;
+  flex-basis: 100%;
+  color: ${props => props.hue };
+`;
 
-export {ChatStyled, InputStyled, ButtonStyled,MessagesContainer, MessageStyled};
+const TextStyled = styled.div`
+  display: flex;
+  font-family: "Optima";
+  font-style: italic;
+  font-size: 14px;
+  flex-basis: 100%;
+`;
+
+export {ChatStyled, InputStyled, ButtonStyled,MessagesContainer, MessageStyled, UserStyled, TextStyled};

@@ -18,6 +18,7 @@ const JoinStyled = styled.div.attrs(props => ({
     height: 0px;
   }
 `;
+
 const InputStyled = styled.input`
   font-family: "Optima";
   font-style: italic;
@@ -26,6 +27,7 @@ const InputStyled = styled.input`
     outline: none;
   }
 `;
+
 const ButtonStyled = styled.button`
   color: rgb(51, 102, 255);
   font-family: "Optima";
@@ -55,6 +57,7 @@ const ButtonStyled = styled.button`
     outline: none;
   }
 `;
+
 const SpritesContainer = styled.div`
   grid-row: 1 / span 1;
   grid-column: 1 / span 1;
@@ -77,6 +80,12 @@ const StyledSpritesheet = styled(Spritesheet)`
   position: relative;
   top: -25%;
   transform: rotatex(75deg) translatey(-350px) translatez(-75px);
+  border-image:
+    linear-gradient(
+      to bottom,
+      rgb(51, 102, 255),
+      rgba(0, 0, 0, 0)
+    ) 2 100%;
   :hover{
     transform: rotatex(0deg);
     transform: rotatez(0deg);

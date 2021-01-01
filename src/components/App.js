@@ -7,7 +7,6 @@ import Socket from '../Socket';
 let socket = io('http://localhost:3001', { transports: ['websocket']});
 import {StyledApp, StyledFooter} from './styles/appStyles';
 
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -28,9 +27,8 @@ class App extends React.Component {
       this.setState({user:newUser, open:true}, () => {
         console.log(this.state)
       });
-    })
-
-  }
+    });
+  };
 
   componentDidMount () {
     socket.on('currentUsers', (success) => {
@@ -44,8 +42,8 @@ class App extends React.Component {
     });
     socket.on('messages', (messages) => {
         this.setState({messages})
-    })
-  }
+    });
+  };
 
   render () {
     return (
@@ -59,7 +57,7 @@ class App extends React.Component {
         />
       </StyledApp>
       <StyledFooter>
-      <p>Authored by Sweet Baby D AKA San Pelligringo.<br></br>
+      <p>Authored by dwwr<br></br>
       <a href="https://github.com/dwwr/hierographics">View the source on Github</a></p>
       </StyledFooter>
       </div>
