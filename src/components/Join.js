@@ -1,6 +1,6 @@
 import React from 'react';
 import Spritesheet from 'react-responsive-spritesheet';
-import {SpritesContainer, StyledSpritesheet, SelectedSpritesheet} from './styles/joinStyles';
+import {JoinStyled, InputStyled, ButtonStyled, SpritesContainer, StyledSpritesheet, SelectedSpritesheet}from './styles/joinStyles';
 
 let assets = [
   `../../src/assets/hiero1.png`,
@@ -14,35 +14,53 @@ class Form extends React.Component {
     super(props);
     this.state = {
       username: '',
-      character: null
+      character: -1,
+      visible: true
     }
     this.handleChange = this.handleChange.bind(this);
     this.submitForm = this.submitForm.bind(this);
+    // this.toggleForm = this.toggleForm.bind(this);
   };
 
   handleChange(event) {
     event.preventDefault();
     this.setState({
-      [event.target.id]: event.target.value,
+      [event.target.id]: event.target.value
     });
   };
 
   submitForm(e) {
     e.preventDefault();
+    console.log(this.state);
+    if (!this.state.username || this.state.character === -1) {
+      alert('Before entering, you must pick an avatar and username.');
+      return;
+    }
+    let packet = {
+      username: this.state.username,
+      character: this.state.character
+    }
     this.props.connectUser(this.state);
+    this.setState({
+      visible: !this.state.visible
+    });
   }
 
   render() {
+    var visibility = "hide";
+
+    if (this.state.visible) {
+      visibility = "show";
+    }
+
     return (
-      <div>
-        <label>username: </label>
-        <input name="username" type="text" id="username" onChange={this.handleChange} value={this.state.username} required />
-        <button onClick={this.submitForm}>Dive In</button>
+      <JoinStyled visibility={visibility}>
         <SpritesContainer>
         {assets.map((sprite, index) => {
           if (index === this.state.character) {
             return <SelectedSpritesheet
             key={index}
+            visibility={visibility}
             character={this.state.character}
             onClick={(event)=>{
               this.setState({character: index}, () => {
@@ -62,6 +80,7 @@ class Form extends React.Component {
           }
           return <StyledSpritesheet
           key={index}
+          visibility={visibility}
           character={this.state.character}
           onClick={(event)=>{
             this.setState({character: index}, () => {
@@ -80,7 +99,9 @@ class Form extends React.Component {
         />
         })}
         </SpritesContainer>
-      </div>
+        <InputStyled name="username" type="text" id="username" onChange={this.handleChange} value={this.state.username} required visibility={visibility} placeholder="Choose your Hiero, then tell me your name"/>
+        <ButtonStyled visibility={visibility} onClick={this.submitForm}>Dive In</ButtonStyled>
+      </JoinStyled>
     )
   };
 };

@@ -2,11 +2,11 @@ import Phaser from 'phaser';
 import React from "react";
 import ReactDOM from "react-dom";
 import {App} from './components/App';
+import { createGlobalStyle } from 'styled-components'
 
-// import io from 'socket.io-client';
-
-// let socket = io('http://localhost:3001', { transports: ['websocket']});
-
-ReactDOM.render(<App />, document.getElementById("root"));
-
-// export default socket;
+const GlobalStyle = createGlobalStyle`
+  body {
+    background-color: pink;
+  }
+`;
+ReactDOM.render(<div><GlobalStyle /><App /></div>, document.getElementById("root"));

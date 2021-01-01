@@ -122,6 +122,7 @@ class Test extends Phaser.Scene {
 
     this.cursors = this.input.keyboard.createCursorKeys();
     this.input.keyboard.removeCapture("SPACE");
+    this.input.keyboard.removeCapture("ENTER");
 
 
     this.grid = new AlignGrid({scene: this, rows: 5, cols: 5});

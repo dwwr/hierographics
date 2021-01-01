@@ -1,5 +1,7 @@
 import React from 'react';
 import {socket} from "./App";
+import {ChatStyled, InputStyled, ButtonStyled,MessagesContainer, MessageStyled} from './styles/chatStyles';
+import Messages from './Messages'
 
 class Chat extends React.Component {
   constructor(props) {
@@ -11,9 +13,12 @@ class Chat extends React.Component {
     };
     this.onTextChange = this.onTextChange.bind(this);
     this.onMessageSubmit = this. onMessageSubmit.bind(this);
+    this.onKeyPress = this.onKeyPress.bind(this);
+
   };
 
   onTextChange (e) {
+    e.preventDefault();
     this.setState({ msg: e.target.value });
   };
 
@@ -23,9 +28,19 @@ class Chat extends React.Component {
     console.log(this.props.user)
     let packet = {message, user}
     console.log(packet);
-    socket.emit('newMessage', packet);
-    this.setState({ msg: "" });
+    if (this.props.user.username) {
+      socket.emit('newMessage', packet);
+      this.setState({ msg: "" });
+    } else {
+      alert('Please Log In!')
+    }
   };
+
+  onKeyPress (e) {
+    if(e.which === 13) {
+      this.onMessageSubmit();
+    }
+  }
 
   componentDidMount () {
     socket.on('messages', (messages) => {
@@ -33,17 +48,15 @@ class Chat extends React.Component {
     })
   }
 
+
+
   render () {
     return (
-      <div>
-        <input onChange={e => this.onTextChange(e)} value={this.state.msg} />
-        <button onClick={this.onMessageSubmit}>Send</button>
-        <ul>
-          {this.state.messages.map((message, index) => {
-            return <li key={index}>{message.user} said {message.message}</li>
-          })}
-        </ul>
-      </div>
+      <ChatStyled open={this.props.open}>
+        <InputStyled onChange={e => this.onTextChange(e)} value={this.state.msg} onKeyPress={this.onKeyPress}/>
+        <ButtonStyled onClick={this.onMessageSubmit}>Send</ButtonStyled>
+        <Messages messages={this.state.messages} />
+      </ChatStyled>
     )
   };
 };

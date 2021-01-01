@@ -4,8 +4,8 @@ import {Game} from './Game';
 import Chat from './Chat';
 import io from 'socket.io-client';
 import Socket from '../Socket';
-// let socket = new Socket('http://localhost:3001');
 let socket = io('http://localhost:3001', { transports: ['websocket']});
+import {StyledApp, StyledFooter} from './styles/appStyles';
 
 
 class App extends React.Component {
@@ -13,6 +13,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       user: {},
+      open: false,
       otherUsers: {},
       messages: []
     };
@@ -23,9 +24,10 @@ class App extends React.Component {
 
   connectUser(newUser) {
     socket.emit('newUser', newUser);
-
     socket.on('newSuccess', (newUser)=> {
-      this.setState({user:newUser});
+      this.setState({user:newUser, open:true}, () => {
+        console.log(this.state)
+      });
     })
 
   }
@@ -45,13 +47,21 @@ class App extends React.Component {
     })
   }
 
-
   render () {
     return (
-      <div> Hello World
+      <div>
+      <StyledApp>
         <Join connectUser={this.connectUser}/>
-        <Game user={this.state.user} otherUsers={this.state.otherUsers}/>
-        <Chat messages={this.state.messages} user={this.state.user} />
+        <Game user={this.state.user} otherUsers={this.state.otherUsers}
+        open={this.state.open}/>
+        <Chat messages={this.state.messages} user={this.state.user}
+        open={this.state.open}
+        />
+      </StyledApp>
+      <StyledFooter>
+      <p>Authored by Sweet Baby D AKA San Pelligringo.<br></br>
+      <a href="https://github.com/dwwr/hierographics">View the source on Github</a></p>
+      </StyledFooter>
       </div>
     )
   };

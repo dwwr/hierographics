@@ -1,6 +1,7 @@
 import Phaser from "phaser";
 import React from "react";
 import Test from '../scenes/Test';
+import {StyledGame} from '../components/styles/gameStyles';
 
 let config = {
   type: Phaser.CANVAS,
@@ -30,6 +31,7 @@ class Game extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      open: this.props.open
     }
   }
 
@@ -37,13 +39,14 @@ class Game extends React.Component {
     game = new Phaser.Game(config);
   }
 
-  shouldComponentUpdate() {
-    return false;
-  }
+  // shouldComponentUpdate() {
+  //   return false;
+  // }
 
   render() {
+    console.log(this.props.open)
     return (
-    <div id='phaser-game'> Hello BBJ </div>
+    <StyledGame id='phaser-game' open={this.props.open}></StyledGame>
     );
   }
 };
