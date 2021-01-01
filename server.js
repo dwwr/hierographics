@@ -17,16 +17,16 @@ app.get('*', (req, res) => {
 });
 
 let users = {};
-let messages = [
-  { message: 'bbj', user: 'dw', character: 0 },
-  { message: 'bbj', user: 'dw', character: 1 },
-  { message: 'bbj', user: 'dw', character: 2 },
-  { message: 'bbj', user: 'dw', character: 3 },
-  { message: 'bbj', user: 'dw', character: 0 },
-  { message: 'bbj', user: 'dw', character: 1 },
-  { message: 'bbj', user: 'dw', character: 2 },
-  { message: 'bbj', user: 'dw', character: 3 },
-  { message: 'bbj', user: 'dw', character: 0 }
+// let messages = [
+//   { message: 'bbj', user: 'dw', character: 0 },
+//   { message: 'bbj', user: 'dw', character: 1 },
+//   { message: 'bbj', user: 'dw', character: 2 },
+//   { message: 'bbj', user: 'dw', character: 3 },
+//   { message: 'bbj', user: 'dw', character: 0 },
+//   { message: 'bbj', user: 'dw', character: 1 },
+//   { message: 'bbj', user: 'dw', character: 2 },
+//   { message: 'bbj', user: 'dw', character: 3 },
+//   { message: 'bbj', user: 'dw', character: 0 }
 ];
 
 socket.on('connection', function (socket) {
