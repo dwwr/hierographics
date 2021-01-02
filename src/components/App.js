@@ -4,7 +4,7 @@ import {Game} from './Game';
 import Chat from './Chat';
 import io from 'socket.io-client';
 import Socket from '../Socket';
-let socket = io('http://35.165.198.136:3001', { transports: ['websocket']});
+let socket = io('http://35.165.198.136:3001', { transports: ['websocket'], cors: {origin:'*'}});
 import {StyledApp, StyledFooter} from './styles/appStyles';
 
 class App extends React.Component {
