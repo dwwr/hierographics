@@ -2,3 +2,5 @@ node_modules
 dist/
 *.pem
 *.sh
+*.crt
+*.key
