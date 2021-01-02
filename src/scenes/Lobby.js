@@ -20,12 +20,12 @@ class Lobby extends Phaser.Scene {
   preload () {
     this.load.crossOrigin = true;
 
-    this.load.audio('theme', '/src/assets/notARealBar.mp3');
-    this.load.spritesheet('hiero1','/src/assets/hiero1.png', { frameWidth: 32, frameHeight: 33 });
-    this.load.spritesheet('hiero2','/src/assets/hiero2.png', { frameWidth: 32, frameHeight: 33 });
-    this.load.spritesheet('hiero3','/src/assets/hiero3.png', { frameWidth: 32, frameHeight: 33 });
-    this.load.spritesheet('hiero4','/src/assets/hiero4.png', { frameWidth: 32, frameHeight: 33 });
-    this.load.spritesheet('background', '/src/assets/background.png', { frameWidth: 400, frameHeight: 300 });
+    this.load.audio('theme', 'hierographics/src/assets/notARealBar.mp3');
+    this.load.spritesheet('hiero1','hierographics/src/assets/hiero1.png', { frameWidth: 32, frameHeight: 33 });
+    this.load.spritesheet('hiero2','hierographics/src/assets/hiero2.png', { frameWidth: 32, frameHeight: 33 });
+    this.load.spritesheet('hiero3','hierographics/src/assets/hiero3.png', { frameWidth: 32, frameHeight: 33 });
+    this.load.spritesheet('hiero4','hierographics/src/assets/hiero4.png', { frameWidth: 32, frameHeight: 33 });
+    this.load.spritesheet('background', 'hierographics/src/assets/background.png', { frameWidth: 400, frameHeight: 300 });
 
     this.title = this.add.text(400, 200, 'hieroGraphics', { fontFamily: 'Futura', fontStyle: 'italic', fontWeight: 'bold',fontSize: '100px', fill:'#3366ff'});
     this.title.setShadow(3, 3, '#809fff', 0);
