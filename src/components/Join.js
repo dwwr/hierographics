@@ -3,10 +3,10 @@ import Spritesheet from 'react-responsive-spritesheet';
 import {JoinStyled, InputStyled, ButtonStyled, SpritesContainer, StyledSpritesheet, SelectedSpritesheet}from './styles/joinStyles';
 
 let assets = [
-  `/hierographics/src/assets/hiero1.png`,
-  `/hierographics/src/assets/hiero2.png`,
-  `/hierographics/src/assets/hiero3.png`,
-  `/hierographics/src/assets/hiero4.png`
+  `hierographics/src/assets/hiero1.png`,
+  `hierographics/src/assets/hiero2.png`,
+  `hierographics/src/assets/hiero3.png`,
+  `hierographics/src/assets/hiero4.png`
 ];
 
 class Form extends React.Component {
