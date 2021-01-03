@@ -24,12 +24,12 @@ class Lobby extends Phaser.Scene {
   preload () {
     this.load.crossOrigin = true;
 
-    this.load.audio('theme', 'https://hierographics.s3-us-west-2.amazonaws.com/assets/notARealBar.mp3');
-    this.load.spritesheet('hiero1','https://hierographics.s3-us-west-2.amazonaws.com/assets/hiero1.png', { frameWidth: 32, frameHeight: 33 });
-    this.load.spritesheet('hiero2','https://hierographics.s3-us-west-2.amazonaws.com/assets/hiero2.png', { frameWidth: 32, frameHeight: 33 });
-    this.load.spritesheet('hiero3','https://hierographics.s3-us-west-2.amazonaws.com/assets/hiero3.png', { frameWidth: 32, frameHeight: 33 });
-    this.load.spritesheet('hiero4','https://hierographics.s3-us-west-2.amazonaws.com/assets/hiero4.png', { frameWidth: 32, frameHeight: 33 });
-    this.load.spritesheet('background', 'https://hierographics.s3-us-west-2.amazonaws.com/assets/background.png', { frameWidth: 400, frameHeight: 300 });
+    this.load.audio('theme', 'http://hierographics.s3-us-west-2.amazonaws.com/assets/notARealBar.mp3');
+    this.load.spritesheet('hiero1','http://hierographics.s3-us-west-2.amazonaws.com/assets/hiero1.png', { frameWidth: 32, frameHeight: 33 });
+    this.load.spritesheet('hiero2','http://hierographics.s3-us-west-2.amazonaws.com/assets/hiero2.png', { frameWidth: 32, frameHeight: 33 });
+    this.load.spritesheet('hiero3','http://hierographics.s3-us-west-2.amazonaws.com/assets/hiero3.png', { frameWidth: 32, frameHeight: 33 });
+    this.load.spritesheet('hiero4','http://hierographics.s3-us-west-2.amazonaws.com/assets/hiero4.png', { frameWidth: 32, frameHeight: 33 });
+    this.load.spritesheet('background', 'http://hierographics.s3-us-west-2.amazonaws.com/assets/background.png', { frameWidth: 400, frameHeight: 300 });
 
     this.title = this.add.text(400, 200, 'hieroGraphics', { fontFamily: 'Futura', fontStyle: 'italic', fontWeight: 'bold',fontSize: '100px', fill:'#3366ff'});
     this.title.setShadow(3, 3, '#809fff', 0);
