@@ -111,6 +111,7 @@ const TextStyled = styled.div`
   font-style: italic;
   font-size: 14px;
   flex-basis: 100%;
+  word-break: break-word;
 `;
 
 export {ChatStyled, InputStyled, ButtonStyled,MessagesContainer, MessageStyled, UserStyled, TextStyled};

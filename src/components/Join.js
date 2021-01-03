@@ -42,6 +42,7 @@ class Form extends React.Component {
     this.setState({
       visible: !this.state.visible
     });
+    document.activeElement.blur()
   };
 
   render() {
@@ -91,7 +92,10 @@ class Form extends React.Component {
         />
         })}
         </SpritesContainer>
-        <InputStyled name="username" type="text" id="username" onChange={this.handleChange} value={this.state.username} required visibility={visibility} placeholder="Choose your Hiero, then tell me your name"/>
+        <InputStyled name="username" type="text" id="username" onChange={this.handleChange} value={this.state.username} required
+        visibility={visibility}
+        maxLength={20}
+        placeholder="Choose your Hiero, then tell me your name"/>
         <ButtonStyled visibility={visibility} onClick={this.submitForm}>Dive In</ButtonStyled>
       </JoinStyled>
     )
