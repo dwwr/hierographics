@@ -10,6 +10,10 @@ class Lobby extends Phaser.Scene {
     this.user = {
       username: null
     }
+    this.hero = {
+      x: 0,
+      y: 0
+    }
 
     this.selectCharacter = (user) => {
       const characters = ['hiero1', 'hiero2', 'hiero3', 'hiero4'];
@@ -79,7 +83,6 @@ class Lobby extends Phaser.Scene {
           repeat: -1
         }
       );
-
     })
 
     this.otherUsers = this.physics.add.group();
@@ -172,8 +175,12 @@ class Lobby extends Phaser.Scene {
         x: this.hero.x,
         y: this.hero.y
       };
-      this.nameTags[this.user.userId].x = this.hero.x - 16;
-      this.nameTags[this.user.userId].y = this.hero.y - 50;
+
+      if (this.nameTags[this.user.userId]) {
+        this.nameTags[this.user.userId].x = this.hero.x - 16;
+        this.nameTags[this.user.userId].y = this.hero.y - 50;
+      }
+
 
       if (this.cursors.right.isDown) {
         this.hero.direction = "right";
