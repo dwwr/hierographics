@@ -7,7 +7,8 @@ Pick your hiero, tell me your name. hieroGraphics connects you instantly to othe
 Who will you be? You can be whoever you want to be. Are you lonely? Well at least in hieroGraphics you are not alone. hieroGraphics offers live gameplay and chat unbounded by space and matter- shed your corporeal form and cross that distance.
 
   > This is going to change everything.
-  D W Warner-Reyes
+ 
+ D W Warner-Reyes
 
 ### *How to Get Started* ###
 This is going to sound weird but trust me. You must go to hierographics.net, preferably in Chrome, and click the lock in the url bar. Open site settings, scroll to the bottom of preferences to the fourth from the bottom (insecure content) and set to allow. Then refresh the page. 
