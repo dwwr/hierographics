@@ -1,6 +1,6 @@
 # *hieroGraphics* #
 
-### *chat, play, & connect in the hierographic world*  ###
+### *Chat, play, & connect in the hierographic world~*  ###
 
 Pick your hiero, tell me your name. hieroGraphics connects you instantly to other hieros all over the world. Tell them what's on your mind, or do a digital dance- Your every thought & movement is transmitted seamlessly, so others can see you as you truly are.
 
