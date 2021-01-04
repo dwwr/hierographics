@@ -9,7 +9,7 @@ Who will you be? You can be whoever you want to be. Are you lonely? Well at leas
   > This is going to change everything.
   D W Warner-Reyes
 
-### How to Get Started ###
+### *How to Get Started* ###
 This is going to sound weird but trust me. You must go to hierographics.net, preferably in Chrome, and click the lock in the url bar. Open site settings, scroll to the bottom of preferences to the fourth from the bottom (insecure content) and set to allow. Then refresh the page. 
 
 If you'd like to run the dev build, clone this repo and npm install. npm start to serve the build at port 8080. The main branch is set to connect to the authoritative server by default. A test server is available via npm run server and runs at port 3001. 
