@@ -9,4 +9,5 @@ const GlobalStyle = createGlobalStyle`
     background-color: pink;
   }
 `;
+
 ReactDOM.render(<div><GlobalStyle /><App /></div>, document.getElementById("root"));
